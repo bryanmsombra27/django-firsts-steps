@@ -48,8 +48,32 @@ def monthly_chanllange_by_number(request, month):
 def monthly_challange(request, month):
     try:
         challange_text = monthly_challanges[month]
-
+        response_data = f"<h1>{challange_text}</h1>"
     except:
-        return HttpResponseNotFound("This month is not valid")
+        return HttpResponseNotFound("<h1> This month is not valid </h1>")
 
-    return HttpResponse(challange_text)
+    return HttpResponse(response_data)
+
+
+def monthly_list(request):
+    months = list(monthly_challanges.keys())
+    list_items = ""
+
+    for i in months:
+        monthPath = reverse("monthly_challange", args=[i])
+        # list_items += f"<li><a href='/challanges/{i}'>{i}</a></li>"
+        list_items += f"<li><a href='{monthPath}'>{i}</a></li>"
+
+    response_data = f'''
+    <ul> 
+            {list_items}
+    </ul>
+
+'''
+
+    return HttpResponse(
+        response_data
+
+    )
+
+    # return JsonResponse(months, safe=False
