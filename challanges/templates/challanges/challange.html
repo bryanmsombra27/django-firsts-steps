@@ -1,0 +1,24 @@
+{% extends "base.html" %} {%block content %}
+
+
+{% comment %} {% include "./includes/header.html" %} {% endcomment %}
+
+{% include "challanges/includes/header.html" %}
+
+
+
+
+
+
+<h1>This Month's Challange</h1>
+
+
+
+
+<h2>{{month|title }}</h2>
+
+{%if challange is not None %}
+<h3>{{challange}}</h3>
+{%else %}
+<h3>There is no challange for this month</h3>
+{%endif %} {%endblock%}

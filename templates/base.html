@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    {% comment %} cuando no se le pasa ningun valor a la variable title, se le
+    asigna el valor My challanges como titulo de la pagina. {% endcomment %}
+    <title>{% block title %} My challanges {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'styles.css'  %}"
+    />
+    {% block css_files %} {% endblock %}
+  </head>
+  <body>
+    {%block content %} {%endblock %}
+  </body>
+</html>

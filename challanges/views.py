@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 # Create your views here.
 monthly_challanges = {
@@ -15,12 +16,15 @@ monthly_challanges = {
     "september": "In September, learn ",
     "october": "In October, learn ",
     "november": "In November, learn ",
-    "december": "In December, learn ",
+    # "december": "In December, learn ",
+    "december": None,
 }
 
 
 def index(request):
-    return HttpResponse("this works")
+    months = list(monthly_challanges.keys())
+
+    return render(request, "challanges/index.html", {"months": months})
 
 
 def february(request):
@@ -46,13 +50,19 @@ def monthly_chanllange_by_number(request, month):
 
 
 def monthly_challange(request, month):
+    print("Mes recibido:", month)
     try:
         challange_text = monthly_challanges[month]
-        response_data = f"<h1>{challange_text}</h1>"
-    except:
-        return HttpResponseNotFound("<h1> This month is not valid </h1>")
+        # response_data = f"<h1>{challange_text}</h1>"
+        # response_data = render_to_string("challanges/challange.html")
+        # return HttpResponse(response_data)
+        print(challange_text, "MES ACTUAL")
 
-    return HttpResponse(response_data)
+        return render(request, "challanges/challange.html", {"challange": challange_text, "month": month})
+    except:
+        # response_data = render_to_string("404.html")
+        # return HttpResponseNotFound(response_data)
+        raise Http404()
 
 
 def monthly_list(request):

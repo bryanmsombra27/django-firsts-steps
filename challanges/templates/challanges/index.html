@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static  %}
+
+{% block title %}Kesero{% endblock  %}
+
+{% block css_files %}  
+
+<link rel="stylesheet" href="{% static 'challanges/challange.css'  %}">
+{% endblock %}
+
+
+
+
+{%block  content %} 
+
+
+{% include "challanges/includes/header.html" %}
+
+
+<h1>All Challanges </h1>
+
+    <ul>
+      {% for month in months %}
+      <li>
+        {% comment %} <a href="/challanges/{{month}}">{{month|title}} </a> {% endcomment %}
+        <a href="{% url "monthly_challange" month  %}">{{month|title}} </a>
+      </li>
+      {% endfor %}
+    </ul>
+{%endblock%}
