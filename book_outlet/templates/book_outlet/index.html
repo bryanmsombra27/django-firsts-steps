@@ -7,7 +7,14 @@ All books
 {% block content %}
 <ul>
     {% for book in books %}
-    <li>{{book.title}} (Rating: {{book.rating}}) </li>
+    <li>
+        <!-- ASI PODEMOS CONSTRUIR RUTAS DINAMICAS -->
+        <!-- <a href="{% url 'book_detail' book.id %}">{{book.title}} </a> (Rating: {{book.rating}}) -->
+        <!-- <a href="/{{book.id}}">{{book.title}} </a> (Rating: {{book.rating}}) -->
+
+        <!--  EL METODO get_absolute_url() ES UNA FUNCION QUE ESTA EN EL MODELO BOOK DONDE PODEMOS SOBREESCRIBIR ESE METODO PARA CREAR LA RUTA DINAMICA DE LA VISTA DETALLE DE LIBRO -->
+        <a href="{{book.get_absolute_url}}">{{book.title}} </a> (Rating: {{book.rating}})
+    </li>
 
 
     {% endfor %}
