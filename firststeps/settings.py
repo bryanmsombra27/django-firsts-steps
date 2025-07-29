@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # de esta forma cargamos las templates utilizadas en nuestro modulo(app) de challanges se cargaran siempre y cuando usemos al convencion de llamar a la carpeta templates
     'challanges',
+    "book_outlet",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +61,8 @@ TEMPLATES = [
         'DIRS': [
             # ASI PODEMOS CARGAR MANUALMENTE LAS TEMPLATES DE NUESTRO MODULO (APP) INDICANDOLE EL PATH DONDE SE ENCUENTRAN
             # BASE_DIR / 'challanges' / 'templates'
-            BASE_DIR / "templates"
+            # BASE_DIR / "templates",
+            # BASE_DIR / "book_outlet" / "templates"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
