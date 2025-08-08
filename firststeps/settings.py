@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # de esta forma cargamos las templates utilizadas en nuestro modulo(app) de challanges se cargaran siempre y cuando usemos al convencion de llamar a la carpeta templates
     'challanges',
     "book_outlet",
+    "reviews",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
