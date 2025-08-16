@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # de esta forma cargamos las templates utilizadas en nuestro modulo(app) de challanges se cargaran siempre y cuando usemos al convencion de llamar a la carpeta templates
     'challanges',
     "book_outlet",
+    "profiles",
     "reviews",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -137,3 +138,6 @@ STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, "static"),
     BASE_DIR / 'static'
 ]
+
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = "/user-media/"
