@@ -1,19 +1,19 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "reviews/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Review</title>
-    <link rel="stylesheet" href="{% static 'reviews/styles.css' %}">
-</head>
+{% block title %}
 
-<body>
-    <form action="/reviews/" method="POST">
-        {% csrf_token %}
-        <!-- {{form}} -->
-        <!-- <div class="form-control  {% if form.user_name.errors %} errors {% endif %}  ">
+Your Review
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<form action="/reviews/" method="POST">
+    {% csrf_token %}
+    <!-- {{form}} -->
+    <!-- <div class="form-control  {% if form.user_name.errors %} errors {% endif %}  ">
             {{form.user_name.label_tag}}
             {{form.user_name}}
             {{form.user_name.errors}}
@@ -32,20 +32,16 @@
 
         </div> -->
 
-        {% for field in form %}
-        <div class="form-control  {% if field.errors %} errors {% endif %}  ">
-            {{field.label_tag}}
-            {{field}}
-            {{field.errors}}
+    {% for field in form %}
+    <div class="form-control  {% if field.errors %} errors {% endif %}  ">
+        {{field.label_tag}}
+        {{field}}
+        {{field.errors}}
 
-        </div>
-        {% endfor %}
-
-
-        <button type="submit">Send</button>
-    </form>
+    </div>
+    {% endfor %}
 
 
-</body>
-
-</html>
+    <button type="submit">Send</button>
+</form>
+{% endblock %}
